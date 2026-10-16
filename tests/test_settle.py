@@ -1,4 +1,4 @@
-from app.settle import compute_balances
+from app.settle import compute_balances, settle
 
 EXPENSES = [
     {"id": 1, "paid_by": 1, "amount_cents": 9000},  # Alex paid for dinner
@@ -23,3 +23,20 @@ def test_balances_sum_to_zero():
 
 def test_no_expenses():
     assert compute_balances([], []) == {}
+
+def test_settle_banff():
+    assert settle({1: 6000, 2: 0, 3: -6000}) == [(3, 1, 6000)]
+
+
+def test_settle_two_debtors():
+    assert settle({1: 50, 2: -10, 3: -40}) == [(3, 1, 40), (2, 1, 10)]
+
+
+def test_settle_everyone_even():
+    assert settle({1: 0, 2: 0}) == []
+
+
+def test_settle_does_not_change_input():
+    balances = {1: 50, 2: -50}
+    settle(balances)
+    assert balances == {1: 50, 2: -50}
