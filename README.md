@@ -46,4 +46,4 @@ docker-compose.yml   local PostgreSQL
 
 ## How settling up works
 
-_Coming in Week 3: explain the debt-simplification algorithm here._
+
