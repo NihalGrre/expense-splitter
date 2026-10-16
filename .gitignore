@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# Secrets — never commit your real .env
+.env
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
